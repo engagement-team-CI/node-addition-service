@@ -1,6 +1,12 @@
-import add from './add'
+const express = require('express')
 
-const main = () => {
-  console.log(`Hello World: ${add(1, 2)}))
-}
-main();
+const app = express()
+const port = process.env.PORT || 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
