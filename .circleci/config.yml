@@ -25,6 +25,7 @@ jobs:
       - heroku/deploy-via-git:
           api-key: API_KEY
           app-name: node-unit-tests
+          branch: circleci
 
 workflows:
   test_my_app:
