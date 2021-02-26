@@ -58,7 +58,7 @@ jobs:
         # Use cache when you have big images, that you would only like to build partially
 #         cache: # optional
         # Use tags when you want to bring your own tags (separated by comma)
-        tags: github-actions
+        tags: engagementteamci/node-unit-tests:github-actions
         # Use tag_names when you want to push tags/release by their git name
 #         tag_names: # optional
         # Push semver docker tags. e.g. image:1.2.3, image:1.2, image:1
