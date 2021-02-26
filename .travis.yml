@@ -6,3 +6,5 @@ deploy:
   provider: heroku
   app: node-unit-tests
   api_key: $HEROKU_API_KEY
+  on:
+    all_branches: true
