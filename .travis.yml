@@ -2,9 +2,16 @@ language: node_js
 node_js:
   - 14.16.0
 cache: yarn
+
+services:
+  - docker
+
+before_install:
+  - docker build -t engagementteamci/node-unit-tests:travisci .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
 deploy:
-  provider: heroku
-  app: node-unit-tests
-  api_key: $HEROKU_API_KEY
+  provider: script
+  script: docker push engagementteamci/node-unit-tests:travisci
   on:
     all_branches: true
