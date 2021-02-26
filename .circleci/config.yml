@@ -20,8 +20,7 @@ workflows:
       - test
       - docker/publish:
           image: 'engagementteamci/node-unit-tests'
-          tag:
-            - circleci
+          tag: circleci
           context: docker-hub
           docker-username: DOCKER_HUB_USERNAME
           docker-password: DOCKER_HUB_PASSWORD
