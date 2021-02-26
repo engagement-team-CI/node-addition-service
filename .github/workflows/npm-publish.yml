@@ -25,35 +25,8 @@ jobs:
       # uses: elgohr/Publish-Docker-Github-Action@f7aca2fea76a5218f3c76cd5933c3ba1d8008774
       uses: elgohr/Publish-Docker-Github-Action@3.02
       with:
-        # The name of the image you would like to push
         name: engagementteamci/node-unit-tests
-        # The login username for the registry
         username: engagementteamci
-        # The login password for the registry
         password: ${{ secrets.DOCKERHUBPASSWORD }}
-        # Use registry for pushing to a custom registry
-#         registry: # optional
-        # Use snapshot to push an additional image
-#         snapshot: # optional
-        # Set the default branch of your repository (default: master)
         default_branch: main
-        # Use dockerfile when you would like to explicitly build a Dockerfile
-#         dockerfile: # optional
-        # Use workdir when you would like to change the directory for building
-#         workdir: # optional
-        # Use context when you would like to change the Docker build context.
-#         context: # optional
-        # Use buildargs when you want to pass a list of environment variables as build-args
-#         buildargs: # optional
-        # Use buildoptions when you want to configure options for building
-#         buildoptions: # optional
-        # Use cache when you have big images, that you would only like to build partially
-#         cache: # optional
-        # Use tags when you want to bring your own tags (separated by comma)
         tags: "github-actions"
-        # Use tag_names when you want to push tags/release by their git name
-        # tag_names: github-actions
-        # Push semver docker tags. e.g. image:1.2.3, image:1.2, image:1
-#         tag_semver:
-        # Set no_push to true if you want to prevent the action from pushing to a registry (default: false)
-#         no_push: # optional
