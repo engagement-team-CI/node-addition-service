@@ -23,7 +23,7 @@ jobs:
             echo "The command above installs Heroku, the command below deploys.
             What you do inbetween is up to you!"
       - heroku/deploy-via-git:
-          api-key: $API_KEY
+          api-key: API_KEY
           app-name: node-unit-tests
 
 workflows:
