@@ -1,6 +1,7 @@
 version: '2.1'
 orbs:
   node: circleci/node@4.2.0
+  heroku: circleci/heroku@1.2.5
 jobs:
   test:
     executor:
@@ -12,7 +13,24 @@ jobs:
           pkg-manager: yarn
       - run:
           command: yarn test
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+          command: >
+            echo "The command above installs Heroku, the command below deploys.
+            What you do inbetween is up to you!"
+      - heroku/deploy-via-git:
+          api-key: $API_KEY
+          app-name: node-unit-tests
+
 workflows:
   test_my_app:
     jobs:
       - test
+      - deploy:
+          context: heroku
+          requires:
+            - test
