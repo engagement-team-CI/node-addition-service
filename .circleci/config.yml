@@ -1,7 +1,7 @@
 version: '2.1'
 orbs:
   node: circleci/node@4.2.0
-  heroku: circleci/heroku@1.2.5
+  docker: circleci/docker@1.5.0
 jobs:
   test:
     executor:
@@ -13,24 +13,15 @@ jobs:
           pkg-manager: yarn
       - run:
           command: yarn test
-  deploy:
-    executor: heroku/default
-    steps:
-      - checkout
-      - heroku/install
-      - run:
-          command: >
-            git checkout -b circleci
-      - heroku/deploy-via-git:
-          api-key: API_KEY
-          app-name: node-unit-tests
-          branch: circleci
 
 workflows:
   test_my_app:
     jobs:
       - test
-      - deploy:
-          context: heroku
+      - docker/publish:
+          image: 'engagementteamci/node-unit-tests:circleci'
+          context: docker-hub
+          docker-username: DOCKER_HUB_USERNAME
+          docker-password: DOCKER_HUB_PASSWORD
           requires:
             - test
