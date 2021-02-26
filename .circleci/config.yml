@@ -20,8 +20,7 @@ jobs:
       - heroku/install
       - run:
           command: >
-            echo "The command above installs Heroku, the command below deploys.
-            What you do inbetween is up to you!"
+            git checkout -b circleci
       - heroku/deploy-via-git:
           api-key: API_KEY
           app-name: node-unit-tests
