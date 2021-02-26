@@ -1,15 +1,13 @@
-language: node_js
-node_js:
-  - 14.16.0
-cache: yarn
-services:
-  - docker
-
 jobs:
   include:
     - stage: test
-      script: yarn test
+      language: node_js
+      node_js:
+        - 14.16.0
+      cache: yarn
     - stage: deploy
+      services:
+        - docker
       before_install:
         - docker build -t engagementteamci/node-unit-tests:travisci .
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
