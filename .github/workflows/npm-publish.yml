@@ -4,7 +4,7 @@
 name: Deploy
 on:
   workflow_run:
-    workflows: ["Node.js CI"]
+    workflows: ["build-and-test"]
     branches: [main]
     types: 
       - completed
