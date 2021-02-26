@@ -2,3 +2,7 @@ language: node_js
 node_js:
   - 14.16.0
 cache: yarn
+deploy:
+  provider: heroku
+  app: node-unit-tests
+  api_key: $HEROKU_API_KEY
