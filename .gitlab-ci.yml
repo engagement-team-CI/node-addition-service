@@ -1,15 +1,26 @@
-# This file is a template, and might need editing before it works on your project.
-# Official framework image. Look for the different tagged releases at:
-# https://hub.docker.com/r/library/node/tags/
-image: node:latest
+image: node:lts
 
 # This folder is cached between builds
-# http://docs.gitlab.com/ee/ci/yaml/README.html#cache
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
   paths:
     - node_modules/
 
-test_async:
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
   script:
-    - npm install
-    - yarn test
+  - npm install
+  - yarn test
+
+deploy:
+  stage: deploy
+  image: ruby:latest
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
+  only:
+      - main
