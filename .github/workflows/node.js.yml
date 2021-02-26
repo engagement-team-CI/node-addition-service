@@ -28,21 +28,59 @@ jobs:
     - run: yarn install --frozen-lockfile
     - run: yarn test
     
-    - name: Deploy to Heroku
+    - name: Publish Docker
       # You may pin to the exact commit or the version.
-      # uses: AkhileshNS/heroku-deploy@79ef2ae4ff9b897010907016b268fd0f88561820
-      uses: AkhileshNS/heroku-deploy@v3.12.12
+      # uses: elgohr/Publish-Docker-Github-Action@f7aca2fea76a5218f3c76cd5933c3ba1d8008774
+      uses: elgohr/Publish-Docker-Github-Action@3.02
       with:
-        # This will be used for authentication. You can find it in your heroku homepage account settings
-        heroku_api_key: ${{ secrets.HEROKUAPIKEY }}
-        # Email that you use with heroku
-        heroku_email: engagement.team@protonmail.com
-        # The appname to use for deploying/updating
-        heroku_app_name: node-unit-tests
-        # An optional buildpack to use when creating the heroku application
-#         buildpack: # optional
-        # The branch that you would like to deploy to Heroku
-        branch: main
+        # The name of the image you would like to push
+        name: node-unit-tests
+        # The login username for the registry
+        username: engagementteamci
+        # The login password for the registry
+        password: ${{ secrets.DOCKERHUBPASSWORD }}
+        # Use registry for pushing to a custom registry
+#         registry: # optional
+        # Use snapshot to push an additional image
+#         snapshot: # optional
+        # Set the default branch of your repository (default: master)
+        default_branch: main
+        # Use dockerfile when you would like to explicitly build a Dockerfile
+#         dockerfile: # optional
+        # Use workdir when you would like to change the directory for building
+#         workdir: # optional
+        # Use context when you would like to change the Docker build context.
+#         context: # optional
+        # Use buildargs when you want to pass a list of environment variables as build-args
+#         buildargs: # optional
+        # Use buildoptions when you want to configure options for building
+#         buildoptions: # optional
+        # Use cache when you have big images, that you would only like to build partially
+#         cache: # optional
+        # Use tags when you want to bring your own tags (separated by comma)
+        tags: github-actions
+        # Use tag_names when you want to push tags/release by their git name
+#         tag_names: # optional
+        # Push semver docker tags. e.g. image:1.2.3, image:1.2, image:1
+#         tag_semver: # optional
+        # Set no_push to true if you want to prevent the action from pushing to a registry (default: false)
+#         no_push: # optional
+    
+#     - name: Deploy to Heroku
+#       # You may pin to the exact commit or the version.
+#       # uses: AkhileshNS/heroku-deploy@79ef2ae4ff9b897010907016b268fd0f88561820
+#       uses: AkhileshNS/heroku-deploy@v3.12.12
+#       with:
+#         # This will be used for authentication. You can find it in your heroku homepage account settings
+#         heroku_api_key: ${{ secrets.HEROKUAPIKEY }}
+#         # Email that you use with heroku
+#         heroku_email: engagement.team@protonmail.com
+#         # The appname to use for deploying/updating
+#         heroku_app_name: node-unit-tests
+#         # An optional buildpack to use when creating the heroku application
+# #         buildpack: # optional
+#         # The branch that you would like to deploy to Heroku
+#         branch: main
         # Set this to true if you don't want to use --force when switching branches
 #         dontuseforce: # optional, default is false
         # Set this to true if you don't want to automatically create the Heroku app
