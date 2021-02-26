@@ -18,9 +18,13 @@ test:
 
 deploy:
   stage: deploy
-  image: ruby:latest
+  image: gitlab/dind
+  services:
+    - docker:dind
   script:
-    - gem install dpl
-    - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
+    - docker build -t node-unit-tests .
+    - docker tag node-unit-tests engagementteamci/node-unit-tests:gitlab
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - docker push engagementteamci/node-unit-tests:gitlab
   only:
       - main
