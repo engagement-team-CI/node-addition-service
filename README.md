@@ -11,6 +11,8 @@ This project is setup to be a "hello world" style Node.JS app for running a buil
 
 The application has very minimal dependencies and doesn't do a whole lot. That means that the biggest factor in CI performance is likely going to be job spinup time. That means this might not be a good comparison for larger projects that have a large number of dependencies or contain very many CPU or memory intensive tests.
 
+We tried to set each CI provider up in the way that is canonical for that provider. Please help us most fairly represent the performance by contributing PRs to add performance optimizations for any of the CI configurations that we may have missed.
+
 ## What the app does
 
 The application is a minimal `express` based API that adds two numbers together.
