@@ -28,3 +28,15 @@ Then visit http://localhost:3000?a=2&b=3
 ```
 yarn install && yarn test
 ```
+
+## Data
+
+Pipeline duration was collected across 10 pipeline runs for all providers
+
+|CI Provider   |Run 1      |Run 2     |Run 3      |Run 4      |Run 5      |Run 6      |Run 7      |Run 8      |Run 9      |Run 10     |Average    |Median     |
+|--------------|-----------|----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|CircleCI      |57 seconds |69 seconds|68 seconds |58 seconds |53 seconds |52 seconds |52 seconds |52 seconds |55 seconds |58 seconds |57 seconds |56 seconds |
+|GitHub Actions|77 seconds |85 seconds|84 seconds |95 seconds |75 seconds |79 seconds |71 seconds |74 seconds |91 seconds |81 seconds |81 seconds |80 seconds |
+|GitLab        |107 seconds|98 seconds|100 seconds|102 seconds|107 seconds|104 seconds|107 seconds|100 seconds|111 seconds|109 seconds|105 seconds|106 seconds|
+|TravisCI      |81 seconds |67 seconds|67 seconds |79 seconds |69 seconds |70 seconds |68 seconds |69 seconds |71 seconds |74 seconds |72 seconds |70 seconds |
+
