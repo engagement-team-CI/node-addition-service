@@ -1,8 +1,8 @@
 {
-  "name": "node-unit-tests",
+  "name": "node-addition-service",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:engagement-team-CI/node-unit-tests.git",
+  "repository": "git@github.com:engagement-team-CI/node-addition-service.git",
   "author": "Roy van de Water <roy.vwater@gmail.com>",
   "license": "MIT",
   "scripts": {

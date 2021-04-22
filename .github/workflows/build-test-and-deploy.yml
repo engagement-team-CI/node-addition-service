@@ -43,7 +43,7 @@ jobs:
       # uses: elgohr/Publish-Docker-Github-Action@f7aca2fea76a5218f3c76cd5933c3ba1d8008774
       uses: elgohr/Publish-Docker-Github-Action@3.02
       with:
-        name: engagementteamci/node-unit-tests
+        name: engagementteamci/node-addition-service
         username: engagementteamci
         password: ${{ secrets.DOCKERHUBPASSWORD }}
         default_branch: main

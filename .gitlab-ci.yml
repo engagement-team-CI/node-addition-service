@@ -19,9 +19,9 @@ deploy:
   stage: deploy
   image: gitlab/dind
   script:
-    - docker build -t node-unit-tests .
-    - docker tag node-unit-tests engagementteamci/node-unit-tests:gitlab
+    - docker build -t node-addition-service .
+    - docker tag node-addition-service engagementteamci/node-addition-service:gitlab
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - docker push engagementteamci/node-unit-tests:gitlab
+    - docker push engagementteamci/node-addition-service:gitlab
   only:
       - main
