@@ -33,11 +33,13 @@ yarn install && yarn test
 
 ## Data
 
-Pipeline duration was collected across 10 pipeline runs for all providers (All times in seconds)
+Pipeline duration was collected across 10 pipeline runs for all providers.
 
-|CI Provider   |1          |2         |3          |4          |5          |6          |7          |8          |9          |10         |Average    |Median     |
-|--------------|-----------|----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-|CircleCI      |57         |69        |68         |58         |53         |52         |52         |52         |55         |58         |57         |56         |
-|GitHub Actions|77         |85        |84         |95         |75         |79         |71         |74         |91         |81         |81         |80         |
-|GitLab        |107        |98        |100        |102        |107        |104        |107        |100        |111        |109        |105        |106        |
-|TravisCI      |81         |67        |67         |79         |69         |70         |68         |69         |71         |74         |72         |70         |
+|CI Provider   |1  |2 |3  |4  |5  |6  |7  |8  |9  |10 |Average|Median|
+|--------------|--:|-:|--:|--:|--:|--:|--:|--:|--:|--:|------:|-----:|
+|CircleCI      | 57|69| 68| 58| 53| 52| 52| 52| 55| 58|     57|    56|
+|GitHub Actions| 77|85| 84| 95| 75| 79| 71| 74| 91| 81|     81|    80|
+|GitLab        |107|98|100|102|107|104|107|100|111|109|    105|   106|
+|TravisCI      | 81|67| 67| 79| 69| 70| 68| 69| 71| 74|     72|    70|
+
+*\* All times are in seconds*
