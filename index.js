@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000
 app.get('/', (req, res) => {
   const a = parseInt(req.query.a)
   const b = parseInt(req.query.b)
-  res.send(`Hello World!: ${add(a, b)}`)
+  res.send(`Hello World - October 13th!: ${add(a, b)}`)
 })
 
 app.listen(port, () => {
