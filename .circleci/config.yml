@@ -11,6 +11,7 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
+      # testing updating config
       - run:
           command: yarn test
 
