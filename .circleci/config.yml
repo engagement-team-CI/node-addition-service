@@ -3,13 +3,21 @@ orbs:
   node: circleci/node@4.2.0
   docker: circleci/docker@1.5.0
 jobs:
+  hello-world-docker:
+    docker:
+      - image: cimg/node:14.10.1
+        auth:
+          username: DOCKER_HUB_USERNAME
+          password: DOCKER_HUB_PASSWORD
+    steps:
+      - run:
+          command: yarn test
   hello-world-executor:
     executor:
       name: node/default
       tag: 'lts'
     steps:
-      - run:
-        command: echo "hello world!"
+      - run: echo "hello world!"
   test:
     executor:
       name: node/default
@@ -25,6 +33,8 @@ workflows:
   test_my_app:
     jobs:
       - test
+      - hello-world-executor
+      - hello-world-docker
       - docker/publish:
           image: 'engagementteamci/node-addition-service'
           tag: circleci
