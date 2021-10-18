@@ -3,6 +3,13 @@ orbs:
   node: circleci/node@4.2.0
   docker: circleci/docker@1.5.0
 jobs:
+  hello-world-executor:
+    executor:
+      name: node/default
+      tag: 'lts'
+    steps:
+      - run:
+        command: echo "hello world!"
   test:
     executor:
       name: node/default
