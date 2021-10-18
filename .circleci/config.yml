@@ -17,6 +17,9 @@ jobs:
       name: node/default
       tag: 'lts'
     steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
       - run: echo "hello world!"
   test:
     executor:
