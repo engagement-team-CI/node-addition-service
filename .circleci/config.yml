@@ -4,6 +4,7 @@ orbs:
   docker: circleci/docker@1.5.0
 jobs:
   test:
+    parallelism: 2000
     executor:
       name: node/default
       tag: 'lts'
