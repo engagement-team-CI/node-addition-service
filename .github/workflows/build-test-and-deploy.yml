@@ -21,30 +21,26 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
+        cache: yarn
     - run: yarn install --frozen-lockfile
     - run: yarn test
-    
+
   deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v2
-    - name: Publish Docker
-      # You may pin to the exact commit or the version.
-      # uses: elgohr/Publish-Docker-Github-Action@f7aca2fea76a5218f3c76cd5933c3ba1d8008774
-      uses: elgohr/Publish-Docker-Github-Action@3.02
+    - uses: docker/login-action@v1
       with:
-        name: engagementteamci/node-addition-service
-        username: engagementteamci
+        username: ${{ secrets.DOCKERHUBUSERNAME }}
         password: ${{ secrets.DOCKERHUBPASSWORD }}
-        default_branch: main
-        tags: "github-actions"
+
+    - name: Publish Docker
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: ${{ secrets.DOCKERHUBUSERNAME }}/node-addition-service:github-actions
