@@ -41,11 +41,11 @@ jobs:
     - name: Login to DockerHub
       uses: docker/login-action@v1 
       with:
-        username: engagementteamci
+        username: ${{ secrets.DOCKERHUBUSERNAME }}
         password: ${{ secrets.DOCKERHUBPASSWORD }}
         
     - name: Publish Docker
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: engagementteamci/node-addition-service:github-actions
+        tags: ${{ secrets.DOCKERHUBUSERNAME }}/node-addition-service:github-actions
