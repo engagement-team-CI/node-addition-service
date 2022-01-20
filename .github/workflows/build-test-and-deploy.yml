@@ -24,6 +24,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-deps-v1-${{ hashFiles('**/yarn.lock') }}
     - run: yarn install --frozen-lockfile
     - run: yarn test
     
