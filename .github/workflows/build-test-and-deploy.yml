@@ -34,15 +34,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Login to DockerHub
-      uses: docker/login-action@v1 
+    - uses: docker/setup-buildx-action@v1
+    - uses: docker/login-action@v1 
       with:
         username: ${{ secrets.DOCKERHUBUSERNAME }}
         password: ${{ secrets.DOCKERHUBPASSWORD }}
-        
+
     - name: Publish Docker
       uses: docker/build-push-action@v2
       with:
         push: true
         tags: ${{ secrets.DOCKERHUBUSERNAME }}/node-addition-service:github-actions
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
