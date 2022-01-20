@@ -45,5 +45,3 @@ jobs:
       with:
         push: true
         tags: ${{ secrets.DOCKERHUBUSERNAME }}/node-addition-service:github-actions
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
